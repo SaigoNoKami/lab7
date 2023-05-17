@@ -14,10 +14,18 @@ const workerSchema = new Schema({
   phone: {
     type: String,
     required: true,
+    validate: {
+      validator: (v) => /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/.test(v),
+      message: props => `${props.value} не є телефонним номером`
+    },
   },
   email: {
     type: String,
     required: true,
+    validate: {
+      validator: (v) => /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/.test(v),
+      message: props => `${props.value} не є валідною електронною адресою`
+    },
   },
   avatar: {
       data: Buffer,
