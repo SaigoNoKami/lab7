@@ -30,10 +30,10 @@ class processController {
   async delete(req, res) {
     try {
       const {name} = req.body
-      const process = await processshemas.findOne({name: name})
-      res.status(200).send()
+      const process = await processshemas.findOne({name: name}
       if (process) {
         await processshemas.findByIdAndDelete(product._id);
+        res.status(200).send()
       } else {
         return res.status(400).send()
       }
